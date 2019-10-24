@@ -12,8 +12,6 @@ import {AppRoutingModule} from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginComponent,
-    // SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,6 @@ import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [SignupComponent],
-  imports: [SignupRoutingModule, SharedModule, CommonModule]
+  imports: [SignupRoutingModule, SharedModule]
 })
 export class SignupModule { }

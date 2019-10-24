@@ -11,8 +11,9 @@ import {ValidatorsService} from './validators.service';
     FormsModule
   ],
   exports: [
+    CommonModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ]
 })
 export class SharedModule {

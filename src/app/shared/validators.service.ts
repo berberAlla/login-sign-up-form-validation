@@ -6,7 +6,9 @@ import {FormGroup, ValidationErrors} from '@angular/forms';
 })
 export class ValidatorsService {
 
-  static passwordPattern = '^(?=.*[0-9])(?=.*[$~\\-_])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$~\\-_]{8,}$';
+  static passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{7,}$';
+  static namePattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{7,}$';
+
 
   public equalPasswordValidator({value}: FormGroup): ValidationErrors | null {
     const [pass, cpass] = Object.values(value);

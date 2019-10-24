@@ -50,7 +50,7 @@
           *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched"
     >
       <span *ngIf="signUpForm.get('email')['errors']['required']">Please enter your email.</span>
-      <span *ngIf="signUpForm.get('email')['errors']['email']">Enter correct email address.</span>
+      <span *ngIf="signUpForm.get('email')['errors']['email']">Email must be a valid email address. Please enter correct email address.</span>
 
     </span>
   </div>
@@ -66,6 +66,10 @@
     <span class="text-danger"
           *ngIf="signUpForm.get('password').touched && signUpForm.get('password').get('pass').getError('required')">
       Please enter your password
+    </span>
+    <span class="text-danger"
+          *ngIf="signUpForm.get('password').touched && signUpForm.get('password').get('pass').getError('pattern')">
+      Password not valid. Password must contain:numbers, capitals, lower letters, any special character, min 8 characters
     </span>
   </div>
 

@@ -1,29 +1,61 @@
-<p class="text-xs-center">Войдите для работы</p>
-<form>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input
-      type="text"
-      class="form-control underlined"
-      id="email"
-      placeholder="Введите ваш email"
+
+<body class="text-center">
+<form class="form-signIn" [formGroup]="loginForm">
+
+  <h1 class="h3 mb-3 font-weight-bolder">
+    Please sign in
+  </h1>
+
+  <div class="form-label-group">
+    <input type="email"
+           id="inputEmail"
+           formControlName="email"
+           class="form-control"
+           placeholder="Email address"
+           required
+           autofocus>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <span class="text-danger"
+      *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched"
     >
+      <span *ngIf="loginForm.get('email')['errors']['required']">Please enter your email.</span>
+      <span *ngIf="loginForm.get('email')['errors']['email']">Enter correct email address.</span>
+    </span>
   </div>
-  <div class="form-group">
-    <label for="password">Пароль</label>
-    <input
-      type="password"
-      class="form-control underlined"
-      id="password"
-      placeholder="Пароль"
-    >
+
+  <div class="form-label-group">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input id="inputPassword"
+           class="form-control"
+           formControlName="password"
+           placeholder="Password"
+           required>
+    <span class="text-danger"
+      *ngIf="loginForm.get('password').invalid && loginForm.get('email').touched">
+    <span *ngIf="loginForm.get('password')['errors']['required']">Please enter your password</span>
+
+  </span>
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-block btn-primary">Войти</button>
+
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"
+             [disabled]="loginForm.invalid">
+      Remember me
+    </label>
   </div>
-  <div class="form-group">
-    <p class="text-muted text-xs-center">
-      Нет аккаунта? <a href="#">Зарегистрироваться!</a>
-    </p>
-  </div>
+  <button class="btn btn-lg btn-success btn-block"
+          type="submit"
+          [disabled]="loginForm.invalid"
+  >
+    Sign in
+  </button>
+
+  <p>Not registered? Press:</p>
+  <a class="btn btn-outline-primary" [routerLink]="['/signup']" role="button">Sign up</a>
+  <p class="mt-4 mb-sm-5 text-muted"> © 2019 </p>
+
 </form>
+</body>
+

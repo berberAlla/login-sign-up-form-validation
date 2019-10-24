@@ -1,1 +1,105 @@
-<p>signup works!</p>
+<body class="text-center">
+<form class="form-signIn" [formGroup]="signUpForm">
+
+  <h1 class="h3 mb-3 font-weight-bolder">
+    Please sign up
+  </h1>
+
+  <div class="form-label-group">
+    <input type="firstName"
+           id="inputFirstName"
+           formControlName="firstName"
+           class="form-control"
+           placeholder="First name"
+           required
+           autofocus>
+    <label for="inputFirstName" class="sr-only">First name</label>
+    <span class="text-danger"
+          *ngIf="signUpForm.get('firstName').invalid && signUpForm.get('firstName').touched"
+    >
+      <span *ngIf="signUpForm.get('firstName')['errors']['required']">Please enter your first name.</span>
+    </span>
+  </div>
+
+  <div class="form-label-group">
+    <input type="lastName"
+           id="inputLastName"
+           formControlName="lastName"
+           class="form-control"
+           placeholder="Last name"
+           required
+    >
+    <label for="inputLastName" class="sr-only">Last name</label>
+    <span class="text-danger"
+          *ngIf="signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched"
+    >
+      <span *ngIf="signUpForm.get('lastName')['errors']['required']">Please enter your last name.</span>
+    </span>
+  </div>
+
+  <div class="form-label-group">
+    <input type="email"
+           id="inputEmail"
+           formControlName="email"
+           class="form-control"
+           placeholder="Email address"
+           required
+           autofocus>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <span class="text-danger"
+          *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched"
+    >
+      <span *ngIf="signUpForm.get('email')['errors']['required']">Please enter your email.</span>
+      <span *ngIf="signUpForm.get('email')['errors']['email']">Enter correct email address.</span>
+
+    </span>
+  </div>
+
+  <div class="form-label-group" formGroupName="password">
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password"
+           class="form-control"
+           formControlName="pass"
+           placeholder="Password"
+           required>
+
+    <span class="text-danger"
+          *ngIf="signUpForm.get('password').touched && signUpForm.get('password').get('pass').getError('required')">
+      Please enter your password
+    </span>
+  </div>
+
+  <div class="form-label-group" formGroupName="password">
+
+    <label for="inputReEnterPassword" class="sr-only">Re-enter password</label>
+    <input type="password" id="inputReEnterPassword"
+           class="form-control"
+           formControlName="cpass"
+           placeholder="Re-enter password"
+           required>
+
+    <span class="text-danger"
+          *ngIf="signUpForm.get('password').touched && signUpForm.get('password').get('cpass').getError('required')">
+
+      Please re-enter your password
+    </span>
+
+    <span class="text-danger"
+          *ngIf="signUpForm.get('password').touched && signUpForm.get('password').errors?.notEqual as error">{{error}}
+    </span>
+  </div>
+
+
+  <button class="btn btn-lg btn-success btn-block"
+          type="submit"
+          [disabled]="signUpForm.invalid"
+  >
+    Sign up
+  </button>
+
+  <p>Already registered? Press:</p>
+  <a class="btn btn-outline-primary" href="#" role="button">Sign in</a>
+
+</form>
+</body>
+
